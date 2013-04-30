@@ -79,6 +79,6 @@ $db->select("cats", array("breed" => "Siamese"), "age", 2);
 
 __Insert From Post__
 ```php
-unset($_POST['submit']);
+unset($_POST["submit"]);
 $db->insertRow("cats", $_POST);
 ```
