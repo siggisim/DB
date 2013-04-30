@@ -22,36 +22,36 @@ Usage
 
 __Simple Insert__
 ```php
-$db->insertRow("cats", array("name"=>"Fluffy", "breed"=>"Siamese", "age"=>2));
-$db->insertRow("cats", array("name"=>"Charlie", "breed"=>"Siamese", "age"=>3));
+$db->insertRow("cats", array("name" => "Fluffy", "breed" => "Siamese", "age" => 2));
+$db->insertRow("cats", array("name" => "Charlie", "breed" => "Siamese", "age" => 3));
 ```
 
 __Simple Select Single Row__
 ```php
-$cat = $db->selectRow("cats", array("name"=>"Fluffy"));
+$cat = $db->selectRow("cats", array("name" => "Fluffy"));
 echo $cat["age"];
 ```
 
 __Simple Select Multiple Rows__
 ```php
-$cats = $db->selectRows("cats", array("breed"=>"Siamese"));
+$cats = $db->selectRows("cats", array("breed" => "Siamese"));
 foreach ($cats as $cat)
   echo $cat["name"];
 ```
 
 __Simple Update Row__
 ```php
-$cats = $db->updateRow("cats", array("breed"=>"Bengal"), array("name"=>"Fluffy"));
+$cats = $db->updateRow("cats", array("breed" => "Bengal"), array("name" => "Fluffy"));
 ```
 
 __Simple Delete Row__
 ```php
-$cats = $db->deleteRow("cats", array("name"=>"Fluffy"));
+$cats = $db->deleteRow("cats", array("name" => "Fluffy"));
 ```
 
 __Increment Field__
 ```php
-$db->incrementValue("cats", "age", array("name"=>"Fluffy"));
+$db->incrementValue("cats", "age", array("name" => "Fluffy"));
 ```
 
 __Sum Rows__
@@ -62,17 +62,17 @@ echo "Total cat years: " . $sum;
 
 __Search Rows__
 ```php
-$cats = $db->searchRows("cats", array("name"=>"Fluf"));
+$cats = $db->searchRows("cats", array("name" => "Fluf"));
 ```
 
 __Select, Modify, Update__
 ```php
-$cat = $db->selectRow("cats", array("name"=>"Fluffy"));
+$cat = $db->selectRow("cats", array("name" => "Fluffy"));
 $cat['age'] = 3;
-$db->updateRow("cats", array("name"=>"Fluffy"), $cat);
+$db->updateRow("cats", array("name" => "Fluffy"), $cat);
 ```
 
 __Advanced Select__
 ```php
-$db->select("cats", array("breed"=>"Siamese"), "age", 2);
+$db->select("cats", array("breed" => "Siamese"), "age", 2);
 ```
