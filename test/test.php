@@ -8,7 +8,7 @@ $test->test_insertRow();
 $test->test_selectRow();
 $test->test_selectRows();
 $test->test_searchRows();
-$test->test_getSum();
+$test->test_sumRows();
 $test->test_updateRow();
 $test->test_updateRows();
 $test->test_incrementValue();
