@@ -51,18 +51,18 @@ $cats = $db->deleteRow("cats", array("name"=>"Fluffy"));
 
 __Increment Field__
 ```php
-incrementValue("cats", "age", array("name"=>"Fluffy"));
+$db->incrementValue("cats", "age", array("name"=>"Fluffy"));
 ```
 
 __Sum Rows__
 ```php
-$sum = sumRows("cats", "age", array());
+$sum = $db->sumRows("cats", "age", array());
 echo "Total cat years: " . $sum;
 ```
 
 __Search Rows__
 ```php
-$cats = searchRows("cats", array("name"=>"Fluf"));
+$cats = $db->searchRows("cats", array("name"=>"Fluf"));
 ```
 
 __Select, Modify, Update__
