@@ -1,6 +1,6 @@
 <?php
 
-require_once("DB.config.php");
+require_once("../DB.config.php");
   
 class DBTest {
 
