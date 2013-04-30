@@ -78,14 +78,14 @@ class DBTest {
     echo "PASS searchRows()" . $this->break;
   }
   
-  public function test_getSum(/*$table, $field, $variables*/) {
-    echo "TEST getSum()" . $this->break;
+  public function test_sumRows(/*$table, $field, $variables*/) {
+    echo "TEST sumRows()" . $this->break;
     $this->db->insertRow("test_table", array("test_column" => "100", "other_column" => "2"));
     $this->db->insertRow("test_table", array("test_column" => "100", "other_column" => "1"));
-    $sum = $this->db->getSum("test_table", "other_column", array("test_column"=>"100"));
+    $sum = $this->db->sumRows("test_table", "other_column", array("test_column"=>"100"));
     if ($sum < 3)
-      die("FAIL getSum()");
-    echo "PASS getSum()" . $this->break;
+      die("FAIL sumRows()");
+    echo "PASS sumRows()" . $this->break;
   }
 
   /* Update Functions */
