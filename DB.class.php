@@ -40,9 +40,7 @@ class DB {
   /* Insert Functions */
   
   public function insertRow($table, $variables) {
-    foreach ($variables as $key => $value) { 
-      $variables[$key] = $this->db->real_escape_string($value); 
-    }  
+    $variables = $this->sanitize($variables);
     $keys = implode(", ", array_keys($variables));
     $values = implode("', '", array_values($variables));
     $query = "INSERT INTO $table (" . $keys . ") VALUES ('" . $values . "')";
@@ -100,6 +98,7 @@ class DB {
   private function update($table, $variables, $oldVariables, $limit = "") {
     $limit = $this->limitFactory($limit);
     $setVariables = array();
+    $variables = $db->this->sanitize($variables);
     foreach ($variables as $variable => $value) {
       $setVariables[] = "`" . $variable . "` = '" . $this->db->real_escape_string($value) . "'";
     }
@@ -147,10 +146,10 @@ class DB {
   private function whereFactory($variables, $operation = " AND ") {
     if (!$variables)
       return "";
-    
+    $variables = $this->sanitize($variables);
     $whereVariables = array();
     foreach ($variables as $variable => $value) {
-      $whereVariables[] = "`" . $variable . "` = '" . $this->db->real_escape_string($value) . "'";
+      $whereVariables[] = "`" . $variable . "` = '" . $value . "'";
     }
     $whereClause = " WHERE " . implode($operation, $whereVariables);
     return $whereClause;
@@ -159,10 +158,10 @@ class DB {
   private function likeFactory($variables, $operation = " OR ") {
     if (!$variables)
       return "";
-    
+    $variables = $this->sanitize($variables);
     $likeVariables = array(); 
     foreach ($variables as $variable => $value) {
-      $likeVariables[] = "`" . $variable . "` LIKE('%" . $this->db->real_escape_string($value) . "%')";
+      $likeVariables[] = "`" . $variable . "` LIKE('%" . $value . "%')";
     }
     $likeClause = " WHERE " . implode($operation, $likeVariables);
     return $likeClause;
@@ -178,6 +177,16 @@ class DB {
     if($order)
       $order = " ORDER BY " . $order;
     return $order;
+  }
+  
+  private function sanitize($variables) {
+    $sanitized = array();
+    foreach ($variables as $key => $value) {
+      $key = $this->db->real_escape_string($key);
+      $value = $this->db->real_escape_string($value);
+      $sanitized[$key] = $value;
+    }
+    return $sanitized;
   }
 }
 
