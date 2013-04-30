@@ -87,7 +87,7 @@ class DB {
     return $this->select($table, $variables, $order, $limit, true);
   }
   
-  public function getSum($table, $field, $variables) {
+  public function sumRows($table, $field, $variables) {
     $query = "SELECT SUM(" . $field . ") FROM $table " . $this->whereFactory($variables);
     $result = $this->db->query($query)
         or die("Could not get sum: " . $this->db->error);
