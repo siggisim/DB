@@ -8,22 +8,22 @@ class DBTest {
   private $break = "<br/>";
   /* Database Functions */
   
-	public function __construct($db) {
+  public function __construct($db) {
     $this->db = $db;
     $this->test_deleteRows();
   }
 
   public function test_close() {
-	}
+  }
   /* Create Functions */
 
-	public function test_createTable(/*$table*/) {
+  public function test_createTable(/*$table*/) {
     echo "TEST createTable()" . $this->break;
     $this->db->createTable("test_table");
     $this->db->selectRow("test_table", array());
     echo "PASS createTable()" . $this->break;
   }
-	
+  
   public function test_createColumn(/*$table, $columnName, $type*/) {
     echo "TEST createColumn()" . $this->break;
     $this->db->createColumn("test_table", "test_column", "text");
@@ -34,7 +34,7 @@ class DBTest {
   
   /* Insert Functions */
   
-	public function test_insertRow(/*$table, $variables*/) {
+  public function test_insertRow(/*$table, $variables*/) {
     echo "TEST insertRow()" . $this->break;
     $this->db->insertRow("test_table", array("test_column" => "1"));
     $this->db->insertRow("test_table", array("test_column" => "2"));
@@ -55,8 +55,8 @@ class DBTest {
       die("FAIL selectRow()");
     echo "PASS selectRow()" . $this->break;
   }
-	
-	public function test_selectRows(/*$table, $variables, $order = "", $limit = ""*/) {
+  
+  public function test_selectRows(/*$table, $variables, $order = "", $limit = ""*/) {
     echo "TEST selectRows()" . $this->break;
     $this->db->insertRow("test_table", array("test_column" => "1"));
     $this->db->insertRow("test_table", array("test_column" => "1"));
@@ -90,7 +90,7 @@ class DBTest {
 
   /* Update Functions */
 
-	public function test_updateRow(/*$table, $variables, $oldVariables*/) {
+  public function test_updateRow(/*$table, $variables, $oldVariables*/) {
     echo "TEST updateRow()" . $this->break;
     $this->db->insertRow("test_table", array("test_column" => "74", "other_column" => "2"));
     $this->db->updateRow("test_table", array("other_column" => "99"), array("test_column" => "74"));
@@ -111,8 +111,8 @@ class DBTest {
       die("FAIL updateRows()");
     echo "PASS updateRows()" . $this->break;
   }
-	
-	public function test_incrementValue(/*$table, $field, $oldVariables, $amount = 1*/) {
+  
+  public function test_incrementValue(/*$table, $field, $oldVariables, $amount = 1*/) {
     echo "TEST incrementValue()" . $this->break;
     $this->db->insertRow("test_table", array("test_column" => "101", "other_column" => "1"));
     $sum = $this->db->incrementValue("test_table", "other_column", array("test_column"=>"101"), 5);
@@ -122,10 +122,10 @@ class DBTest {
     echo "PASS incrementValue()" . $this->break;
   
   }
-	
+  
   /* Delete Functions */
 
-	public function test_deleteRow(/*$table, $variables*/) {
+  public function test_deleteRow(/*$table, $variables*/) {
     echo "TEST deleteRow()" . $this->break;
     $rows = $this->db->selectRows("test_table", array());
     $count = count($rows);
