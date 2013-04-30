@@ -11,11 +11,11 @@ Quick Start
 -----------
 Start using DB in three easy steps:
 
-* Download the DB.class.php and DB.config.php
-* Modify DB.config.php to connect to your MySQL server
-* Include DB.config.php in your php file
+* Download the __DB.class.php__ and __DB.config.php__
+* Modify __DB.config.php__ to connect to your MySQL server
+* Include __DB.config.php__ in your php file
 
-You now have the $db object you can use to start talking to your database.
+You now have the __$db__ object you can use to start talking to your database.
 
 Usage
 -----------
@@ -75,4 +75,10 @@ $db->updateRow("cats", array("name" => "Fluffy"), $cat);
 __Advanced Select__
 ```php
 $db->select("cats", array("breed" => "Siamese"), "age", 2);
+```
+
+__Insert From Post__
+```php
+unset($_POST['submit']);
+$db->insertRow("cats", $_POST);
 ```
