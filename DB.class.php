@@ -98,9 +98,9 @@ class DB {
   private function update($table, $variables, $oldVariables, $limit = "") {
     $limit = $this->limitFactory($limit);
     $setVariables = array();
-    $variables = $db->this->sanitize($variables);
+    $variables = $this->sanitize($variables);
     foreach ($variables as $variable => $value) {
-      $setVariables[] = "`" . $variable . "` = '" . $this->db->real_escape_string($value) . "'";
+      $setVariables[] = "`" . $variable . "` = '" . $value . "'";
     }
     $setClause = "SET " . implode(", ", $setVariables);
     $query = "UPDATE $table " . $setClause . " " . $this->whereFactory($oldVariables) . $limit;
