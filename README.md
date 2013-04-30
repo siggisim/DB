@@ -74,5 +74,5 @@ $db->updateRow("cats", array("name"=>"Fluffy"), $cat);
 
 __Advanced Select__
 ```php
-$db->select("Cats", array("breed"=>"Siamese"), "age", 2);
+$db->select("cats", array("breed"=>"Siamese"), "age", 2);
 ```
